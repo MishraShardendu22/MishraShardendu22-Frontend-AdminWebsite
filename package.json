@@ -1,0 +1,76 @@
+{
+  "name": "mishrashardendu22-admin",
+  "version": "2.10.0",
+  "private": "false",
+  "description": "Admin dashboard for Shardendu Mishra's portfolio - Manage content, projects, and site data.",
+  "author": {
+    "name": "Shardendu Mishra",
+    "email": "mishrashardendu22@gmail.com",
+    "url": "https://github.com/MishraShardendu22"
+  },
+  "homepage": "https://github.com/MishraShardendu22/MishraShardendu22-Frontend-AdminWebsite",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MishraShardendu22/MishraShardendu22-Frontend-AdminWebsite.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MishraShardendu22/MishraShardendu22-Frontend-AdminWebsite/issues"
+  },
+  "license": "MIT",
+  "keywords": [
+    "admin",
+    "dashboard",
+    "portfolio",
+    "cms",
+    "preact",
+    "vite",
+    "typescript",
+    "content management"
+  ],
+  "contributors": [
+    {
+      "name": "Shardendu Mishra",
+      "email": "mishrashardendu22@gmail.com",
+      "url": "https://linkedin.com/in/shardendumishra22"
+    }
+  ],
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "type-check": "tsc --noEmit",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "check-all": "pnpm type-check && pnpm lint && pnpm format:check",
+    "prepare": "husky"
+  },
+  "dependencies": {
+    "preact": "^10.27.2"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.37.0",
+    "@preact/preset-vite": "^2.10.2",
+    "@types/node": "^24.6.0",
+    "@typescript-eslint/eslint-plugin": "^8.46.0",
+    "@typescript-eslint/parser": "^8.46.0",
+    "eslint": "^9.37.0",
+    "globals": "^16.4.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.3",
+    "prettier": "^3.6.2",
+    "typescript": "~5.9.3",
+    "vite": "^7.1.7"
+  },
+  "lint-staged": {
+    "*.{js,ts,jsx,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md,css}": [
+      "prettier --write"
+    ]
+  }
+}
