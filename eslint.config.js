@@ -32,6 +32,6 @@ export default [
     },
   },
   {
-    ignores: ['node_modules', 'dist', 'build', '*.config.js', '*.config.ts'],
+    ignores: ['node_modules', 'dist', 'build', '*.config.js', '*.config.ts', 'Admin-Temp/**'],
   },
 ]
