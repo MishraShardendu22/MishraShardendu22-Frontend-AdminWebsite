@@ -6,13 +6,65 @@ import tailwindcss from '@tailwindcss/vite'
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
-  
+
   return {
     plugins: [preact(), tailwindcss()],
     resolve: {
       alias: {
         '@': path.resolve(__dirname, './src'),
       },
+    },
+    build: {
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            // Core vendor chunk - Framework and routing
+            'vendor-core': ['preact', 'preact/hooks', 'preact-router', 'preact-compat'],
+            // UI components chunk - Radix UI components
+            'vendor-ui': [
+              '@radix-ui/react-alert-dialog',
+              '@radix-ui/react-checkbox',
+              '@radix-ui/react-dialog',
+              '@radix-ui/react-label',
+              '@radix-ui/react-popover',
+              '@radix-ui/react-tabs',
+              '@radix-ui/react-tooltip',
+              'lucide-react',
+            ],
+            // TipTap editor chunk - Rich text editor
+            'vendor-editor': [
+              '@tiptap/react',
+              '@tiptap/starter-kit',
+              '@tiptap/extension-character-count',
+              '@tiptap/extension-code',
+              '@tiptap/extension-code-block-lowlight',
+              '@tiptap/extension-hard-break',
+              '@tiptap/extension-horizontal-rule',
+              '@tiptap/extension-image',
+              '@tiptap/extension-link',
+              '@tiptap/extension-placeholder',
+              '@tiptap/extension-strike',
+              '@tiptap/extension-text-style',
+              '@tiptap/extension-underline',
+              'tiptap-markdown',
+              'lowlight',
+            ],
+            // Form and validation chunk
+            'vendor-forms': ['react-hook-form', '@hookform/resolvers', 'zod'],
+            // DnD and utilities chunk
+            'vendor-utils': [
+              '@dnd-kit/core',
+              '@dnd-kit/sortable',
+              '@dnd-kit/utilities',
+              'axios',
+              'react-hot-toast',
+              'react-markdown',
+            ],
+          },
+        },
+      },
+      // Increase the chunk size warning limit to 600 KB
+      chunkSizeWarningLimit: 600,
     },
     server: {
       proxy: {
