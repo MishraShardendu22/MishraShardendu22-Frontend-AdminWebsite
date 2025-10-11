@@ -86,6 +86,5 @@ export default defineConfig(({ mode }) => {
         },
       },
     },
-    base: '/vc-ap-mishrashardendu22-admin/',
   }
 })
