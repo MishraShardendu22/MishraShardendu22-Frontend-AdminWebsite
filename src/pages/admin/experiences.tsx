@@ -10,6 +10,7 @@ import { Button } from '../../components/ui/button'
 import toast from 'react-hot-toast'
 import type { Experience, CreateExperienceRequest } from '../../types/types.data'
 import { experiencesAPI, projectsAPI } from '../../utils/apiResponse.util'
+import MarkdownEditor from '../../components/extra/MarkdownEditor'
 
 interface ExperienceFormData {
   company_name: string
@@ -305,11 +306,9 @@ export default function ExperiencesPage() {
 
               <div className="space-y-2">
                 <Label htmlFor="description">Description</Label>
-                <textarea
-                  id="description"
-                  value={formData.description}
-                  onChange={(e) => setFormData({...formData, description: (e.target as HTMLTextAreaElement).value})}
-                  className="flex min-h-[120px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                <MarkdownEditor
+                  content={formData.description}
+                  onChange={(content) => setFormData({...formData, description: content})}
                   placeholder="Describe your experience..."
                 />
               </div>

@@ -63,7 +63,9 @@ const SortableCard = ({ project }: SortableCardProps) => {
         <div className="flex items-start gap-3">
           <div
             className="mt-0.5 cursor-grab active:cursor-grabbing p-1 rounded hover:bg-muted/50 transition-colors"
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             {...(attributes as any)}
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             {...(listeners as any)}
           >
             <GripVertical className="h-4 w-4 text-muted-foreground" />

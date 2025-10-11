@@ -9,6 +9,7 @@ import { projectsAPI } from '../../utils/apiResponse.util'
 import { Plus, ExternalLink, Loader2, Pencil, Trash2, Github } from 'lucide-react'
 import toast from 'react-hot-toast'
 import type { Project } from '../../types/types.data'
+import MarkdownEditor from '../../components/extra/MarkdownEditor'
 
 export default function ProjectsPage() {
   const [projects, setProjects] = useState<Project[]>([])
@@ -213,13 +214,10 @@ export default function ProjectsPage() {
               </div>
               <div className="space-y-2">
                 <Label htmlFor="description">Description *</Label>
-                <textarea
-                  id="description"
-                  className="w-full min-h-[100px] rounded-md border border-input bg-background px-3 py-2 text-sm"
-                  value={formData.description}
-                  onInput={(e) => setFormData({ ...formData, description: (e.target as HTMLTextAreaElement).value })}
-                  disabled={submitting}
-                  required
+                <MarkdownEditor
+                  content={formData.description}
+                  onChange={(content) => setFormData({ ...formData, description: content })}
+                  placeholder="Write a detailed description of your project..."
                 />
               </div>
               <div className="grid md:grid-cols-2 gap-4">
@@ -376,13 +374,10 @@ export default function ProjectsPage() {
             </div>
             <div className="space-y-2">
               <Label htmlFor="edit-description">Description *</Label>
-              <textarea
-                id="edit-description"
-                className="w-full min-h-[100px] rounded-md border border-input bg-background px-3 py-2 text-sm"
-                value={formData.description}
-                onInput={(e) => setFormData({ ...formData, description: (e.target as HTMLTextAreaElement).value })}
-                disabled={submitting}
-                required
+              <MarkdownEditor
+                content={formData.description}
+                onChange={(content) => setFormData({ ...formData, description: content })}
+                placeholder="Write a detailed description of your project..."
               />
             </div>
             <div className="grid md:grid-cols-2 gap-4">

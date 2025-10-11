@@ -9,6 +9,7 @@ import { certificationsAPI } from '../../utils/apiResponse.util'
 import { Plus, ExternalLink, Loader2, Pencil, Trash2, Award } from 'lucide-react'
 import toast from 'react-hot-toast'
 import type { Certification } from '../../types/types.data'
+import MarkdownEditor from '../../components/extra/MarkdownEditor'
 
 export default function CertificationsPage() {
   const [certifications, setCertifications] = useState<Certification[]>([])
@@ -208,12 +209,10 @@ export default function CertificationsPage() {
               </div>
               <div className="space-y-2">
                 <Label htmlFor="description">Description</Label>
-                <textarea
-                  id="description"
-                  className="w-full min-h-[80px] rounded-md border border-input bg-background px-3 py-2 text-sm"
-                  value={formData.description}
-                  onInput={(e) => setFormData({ ...formData, description: (e.target as HTMLTextAreaElement).value })}
-                  disabled={submitting}
+                <MarkdownEditor
+                  content={formData.description}
+                  onChange={(content) => setFormData({ ...formData, description: content })}
+                  placeholder="Write a description of your certification..."
                 />
               </div>
               <div className="space-y-2">
@@ -371,12 +370,10 @@ export default function CertificationsPage() {
             </div>
             <div className="space-y-2">
               <Label htmlFor="edit-description">Description</Label>
-              <textarea
-                id="edit-description"
-                className="w-full min-h-[80px] rounded-md border border-input bg-background px-3 py-2 text-sm"
-                value={formData.description}
-                onInput={(e) => setFormData({ ...formData, description: (e.target as HTMLTextAreaElement).value })}
-                disabled={submitting}
+              <MarkdownEditor
+                content={formData.description}
+                onChange={(content) => setFormData({ ...formData, description: content })}
+                placeholder="Write a description of your certification..."
               />
             </div>
             <div className="space-y-2">
