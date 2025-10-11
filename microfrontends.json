@@ -1,0 +1,10 @@
+{
+  "$schema": "https://openapi.vercel.sh/microfrontends.json",
+  "applications": {
+    "mishrashardendu22-admin": {
+      "development": {
+        "fallback": "http://localhost:5174"
+      }
+    }
+  }
+}
