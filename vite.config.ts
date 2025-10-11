@@ -8,6 +8,7 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
 
   return {
+    base: '/vc-ap-mishrashardendu22-admin/',
     plugins: [preact(), tailwindcss()],
     resolve: {
       alias: {
