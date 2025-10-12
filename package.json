@@ -36,7 +36,8 @@
   ],
   "type": "module",
   "scripts": {
-    "dev": "vite --port $(microfrontends port)",
+    "dev": "vite --port 5173",
+    "dev:mfe": "vite --port $(microfrontends port 2>/dev/null || echo 5173)",
     "proxy": "microfrontends proxy --local-apps mishrashardendu22-admin",
     "build": "tsc -b && vite build",
     "preview": "vite preview",

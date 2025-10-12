@@ -1,8 +1,19 @@
 import { useEffect, useState } from 'preact/hooks'
 import { route } from 'preact-router'
 import { useAuth } from '../../hooks/use-auth'
-import { Menu, User, Settings, Briefcase, LogOut, Award, LayoutDashboard, FolderKanban, GraduationCap } from 'lucide-react'
+import {
+  Menu,
+  User,
+  Settings,
+  Briefcase,
+  LogOut,
+  Award,
+  LayoutDashboard,
+  FolderKanban,
+  GraduationCap,
+} from 'lucide-react'
 import { Button } from '../ui/button'
+import ThemeToggle from '../extra/ThemeToggle'
 import type { JSX } from 'preact'
 
 const navigation = [
@@ -46,6 +57,10 @@ export default function AdminLayout({ children, path }: AdminLayoutProps) {
 
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground">
+      <div className="fixed bottom-4 right-4 z-[60]">
+        <ThemeToggle />
+      </div>
+
       <header className="sticky top-0 z-50 flex items-center justify-between bg-card/90 backdrop-blur-md border-b border-border px-4 sm:px-8 h-16 shadow-md">
         <div className="flex items-center gap-4">
           <button
@@ -54,10 +69,7 @@ export default function AdminLayout({ children, path }: AdminLayoutProps) {
           >
             <Menu className="w-6 h-6 text-primary" />
           </button>
-          <a
-            href="/admin/dashboard"
-            className="font-bold text-xl text-primary select-none"
-          >
+          <a href="/admin/dashboard" className="font-bold text-xl text-primary select-none">
             Admin Panel
           </a>
         </div>
@@ -80,11 +92,7 @@ export default function AdminLayout({ children, path }: AdminLayoutProps) {
         </nav>
 
         <div className="flex items-center gap-4">
-          <Button
-            variant="outline"
-            className="text-primary hover:bg-primary/20"
-            onClick={logout}
-          >
+          <Button variant="outline" className="text-primary hover:bg-primary/20" onClick={logout}>
             <LogOut className="w-5 h-5 mr-2" />
             Sign Out
           </Button>

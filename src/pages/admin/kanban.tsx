@@ -63,15 +63,6 @@ const SortableCard = ({ project }: SortableCardProps) => {
         <div className="flex items-start gap-3">
           <div
             className="mt-0.5 cursor-grab active:cursor-grabbing p-1 rounded hover:bg-muted/50 transition-colors"
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            {...(attributes as any)}
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            {...(listeners as any)}
-          >
-            <GripVertical className="h-4 w-4 text-muted-foreground" />
-          </div>
-        <div
-            className="mt-0.5 cursor-grab active:cursor-grabbing p-1 rounded hover:bg-muted/50 transition-colors"
             {...attributes}
             {...listeners}
             role="button"
@@ -80,9 +71,9 @@ const SortableCard = ({ project }: SortableCardProps) => {
             aria-pressed={isDragging}
             aria-roledescription="draggable"
             aria-describedby={`project-${project.project_id}`}
-        >
+          >
             <GripVertical className="h-4 w-4 text-muted-foreground" />
-        </div>
+          </div>
           <div className="flex-1 min-w-0">
             <CardTitle className="text-base font-medium text-foreground line-clamp-2 leading-snug">
               {project.project_title}

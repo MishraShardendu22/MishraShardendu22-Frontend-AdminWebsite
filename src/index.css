@@ -284,38 +284,51 @@ h6 {
     text-rendering: optimizeLegibility;
     font-feature-settings: 'kern' 1;
     font-variant-ligatures: common-ligatures;
+    padding-top: var(--safe-area-inset-top);
+    padding-bottom: var(--safe-area-inset-bottom);
+    padding-left: var(--safe-area-inset-left);
+    padding-right: var(--safe-area-inset-right);
     min-height: 100vh;
+    min-height: 100dvh; /* Dynamic viewport height for mobile */
   }
 
+  /* Mobile-optimized form elements */
   input,
   textarea,
   select,
   button {
-    font-size: 16px;
+    font-size: 16px; /* Prevents zoom on iOS */
     font-family: inherit;
   }
 
+  /* Enhanced button touch targets */
   button,
   [role='button'],
   input[type='button'],
   input[type='submit'],
   input[type='reset'] {
     min-height: var(--touch-target);
+    min-width: var(--touch-target);
+    touch-action: manipulation;
     cursor: pointer;
   }
 
+  /* Mobile-friendly focus styles */
   :focus-visible {
     outline: 2px solid var(--ring);
     outline-offset: 2px;
   }
 
+  /* Remove default focus for mouse users */
   :focus:not(:focus-visible) {
     outline: none;
   }
 
+  /* Enhanced link styles for mobile */
   a {
     color: var(--accent);
     text-decoration: none;
+    touch-action: manipulation;
   }
 
   a:hover {
@@ -323,9 +336,33 @@ h6 {
     text-decoration: underline;
   }
 
+  /* Mobile-optimized selection */
   ::selection {
     background-color: var(--primary);
     color: var(--primary-foreground);
+  }
+
+  ::-moz-selection {
+    background-color: var(--primary);
+    color: var(--primary-foreground);
+  }
+
+  /* Smooth scrolling for mobile */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  /* Remove motion for users who prefer reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 }
 

@@ -7,6 +7,7 @@ import { Label } from '../../components/ui/label'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../components/ui/card'
 import { Alert, AlertDescription } from '../../components/ui/alert'
 import { Eye, EyeOff, Shield } from 'lucide-react'
+import ThemeToggle from '../../components/extra/ThemeToggle'
 import toast from 'react-hot-toast'
 
 export default function LoginPage() {
@@ -44,6 +45,11 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen w-full flex items-center justify-center bg-gradient-to-br from-background via-background/95 to-background p-4">
+      {/* Fixed Theme Toggle - Bottom right position */}
+      <div className="fixed bottom-4 right-4 z-50">
+        <ThemeToggle />
+      </div>
+
       <div className="space-y-8 max-w-md w-full">
         <div className="text-center space-y-4">
           <div className="flex justify-center mb-4">
@@ -54,9 +60,7 @@ export default function LoginPage() {
           <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-secondary via-primary to-accent bg-clip-text text-transparent">
             Admin Access Portal
           </h1>
-          <p className="text-base text-foreground/70">
-            Secure authentication required
-          </p>
+          <p className="text-base text-foreground/70">Secure authentication required</p>
         </div>
 
         <Card className="border-2 border-border/50 hover:border-secondary/50 transition-all duration-500 hover:shadow-2xl">
